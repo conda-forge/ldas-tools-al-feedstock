@@ -1,6 +1,6 @@
 {% set name = "ldas-tools-al" %}
-{% set version = "2.6.1" %}
-{% set sha256 = "cdb5e50eff88c9a64bc01677fc6540a91716966c165e29bdc7cd1e6fb6925619" %}
+{% set version = "2.6.2" %}
+{% set sha256 = "c0dd009ba8e2cce9c627bf442b38460f075fc67b9186de7ba31921b1c32c2a66" %}
 
 package:
   name: {{ name }}
