@@ -16,6 +16,9 @@ source:
 build:
   number: 0
   skip: true  # [win]
+  ignore_run_exports:
+    # not sure we need openssl, but the cmake configure demands it
+    - openssl
 
 requirements:
   build:
@@ -27,17 +30,11 @@ requirements:
     - boost-cpp
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
     - openssl
-    - zlib
-  run:
-    - openssl
-    - zlib
 
 test:
   requires:
     - pkg-config  # [unix]
   commands:
-    - test -f ${PREFIX}/include/ldastoolsal/ldas_types.h  # [unix]
-    - test -f ${PREFIX}/lib/libldastoolsal${SHLIB_EXT}  # [unix]
     - pkg-config --print-errors --modversion ldastoolsal  # [unix]
 
 about:
