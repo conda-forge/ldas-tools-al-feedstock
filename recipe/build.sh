@@ -1,11 +1,17 @@
 #!/bin/bash
 
-CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=c++14/g")
+mkdir -p _build
+pushd _build
 
-./configure \
-    --prefix=${PREFIX} \
-    --with-optimization=high \
-    --without-doxygen
-make -j ${CPU_COUNT}
-make -j ${CPU_COUNT} check
-make -j ${CPU_COUNT} install
+# configure
+cmake ${SRC_DIR} \
+	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
+	-DCMAKE_BUILD_TYPE=RelWithDebInfo
+
+# build
+cmake --build . -- -j${CPU_COUNT}
+
+# test
+ctest -V
+
+cmake --build . --target install
