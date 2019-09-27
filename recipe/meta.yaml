@@ -1,49 +1,49 @@
 {% set name = "ldas-tools-al" %}
-{% set version = "2.6.2" %}
-{% set sha256 = "c0dd009ba8e2cce9c627bf442b38460f075fc67b9186de7ba31921b1c32c2a66" %}
+{% set version = "2.6.3" %}
+{% set sha256 = "2ab6837b67960fd44756be212c71e4cc37981052b7129d9cd1c9f6e08cae7413" %}
+
+# dependencies
+{% set ldas_tools_cmake_version = "1.0.8" %}
 
 package:
-  name: {{ name }}
-  version: {{ version }}
+  name: "{{ name }}"
+  version: "{{ version }}"
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
+  sha256: "{{ sha256 }}"
 
 build:
-  number: 1003
+  number: 0
   skip: true  # [win]
+  ignore_run_exports:
+    # not sure we need openssl, but the cmake configure demands it
+    - openssl
 
 requirements:
   build:
-    - pkg-config
-    - make
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
+    - cmake >=3.6
+    - pkg-config  # [unix]
   host:
-    - zlib
-    - swig
     - boost-cpp
-    - openssl
-  run:
-    - zlib
+    - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
     - openssl
 
 test:
+  requires:
+    - pkg-config  # [unix]
   commands:
-    - test -f ${PREFIX}/include/ldastoolsal/ldas_types.h  # [not win]
-    - test -f ${PREFIX}/lib/libldastoolsal${SHLIB_EXT}  # [not win]
-    - test -f ${PREFIX}/lib/pkgconfig/ldastoolsal.pc  # [not win]
+    - pkg-config --print-errors --modversion ldastoolsal  # [unix]
 
 about:
-  home: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
-  doc_url: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
-  dev_url: https://git.ligo.org/ldastools/LDAS_Tools
-  license: GPLv2
-  license_family: GPL
-  license_file: COPYING
-  summary: LDAS tools abstraction toolkit
+  home: "https://wiki.ligo.org/Computing/LDASTools"
+  dev_url: "https://git.ligo.org/ldastools/LDAS_Tools"
+  license: "GPL-2.0-or-later"
+  license_family: "GPL"
+  license_file: "COPYING"
+  summary: "LDAS tools abstraction toolkit"
 
 extra:
   recipe-maintainers:
