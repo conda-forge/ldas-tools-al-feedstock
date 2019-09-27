@@ -13,7 +13,7 @@ cmake ${SRC_DIR} \
 	-DCMAKE_INSTALL_PREFIX=${PREFIX} \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_INSTALL_LIBDIR="lib" \
-	-DDOXYGEN_EXECUTABLE=FALSE
+	-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=true
 
 # build
 cmake --build . -- -j${CPU_COUNT}
