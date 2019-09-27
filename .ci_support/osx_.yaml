@@ -1,5 +1,5 @@
 MACOSX_DEPLOYMENT_TARGET:
-- '10.9'
+- '10.12'
 boost_cpp:
 - 1.70.0
 c_compiler:
@@ -17,7 +17,7 @@ cxx_compiler_version:
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
-- '10.9'
+- '10.12'
 openssl:
 - 1.1.1a
 pin_run_as_build:

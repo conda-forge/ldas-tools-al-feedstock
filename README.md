@@ -1,9 +1,9 @@
 About ldas-tools-al
 ===================
 
-Home: https://ldastools.docs.ligo.org/LDAS_Tools/Beta/doc/ldas-tools-al/ldastoolsal/html/
+Home: https://wiki.ligo.org/Computing/LDASTools
 
-Package license: GPLv2
+Package license: GPL-2.0-or-later
 
 Feedstock license: BSD 3-Clause
 
