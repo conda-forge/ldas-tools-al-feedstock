@@ -14,7 +14,7 @@ source:
   sha256: "{{ sha256 }}"
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
@@ -32,6 +32,8 @@ requirements:
     - boost-cpp
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
     - openssl
+  run_constrained:  # [osx]
+    - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
   requires:
