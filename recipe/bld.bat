@@ -2,6 +2,8 @@
 mkdir build
 cd build
 
+set "PKG_CONFIG_PATH=%LIBRARY_LIB%\pkgconfig;%LIBRARY_PREFIX%\share\pkgconfig"
+
 :: configure
 cmake .. ^
 	-G "NMake Makefiles" ^

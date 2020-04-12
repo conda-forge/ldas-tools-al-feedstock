@@ -26,7 +26,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     - cmake >=3.6
-    - pkg-config  # [unix]
+    - pkg-config
   host:
     - boost-cpp
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
@@ -36,9 +36,9 @@ requirements:
 
 test:
   requires:
-    - pkg-config  # [unix]
+    - pkg-config
   commands:
-    - pkg-config --print-errors --modversion ldastoolsal  # [unix]
+    - pkg-config --print-errors --modversion ldastoolsal
 
 about:
   home: "https://wiki.ligo.org/Computing/LDASTools"
