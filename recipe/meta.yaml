@@ -14,8 +14,7 @@ source:
   sha256: "{{ sha256 }}"
 
 build:
-  number: 3
-  skip: true  # [win]
+  number: 4
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
   ignore_run_exports:
