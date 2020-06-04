@@ -12,26 +12,26 @@ package:
 source:
   url: "http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz"
   sha256: "{{ sha256 }}"
+  patches:
+    - no-openssl.patch
 
 build:
-  number: 3
-  skip: true  # [win]
+  number: 4
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
-  ignore_run_exports:
-    # not sure we need openssl, but the cmake configure demands it
-    - openssl
 
 requirements:
   build:
-    - {{ compiler('c') }}
-    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}  # [not win]
+    - {{ compiler('cxx') }}  # [not win]
+    - {{ compiler('m2w64_c') }}  # [win]
+    - {{ compiler('m2w64_cxx') }}  # [win]
     - cmake >=3.6
-    - pkg-config  # [unix]
+    - ninja  # [win]
+    - pkg-config
   host:
     - boost-cpp
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
-    - openssl
   run_constrained:  # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
