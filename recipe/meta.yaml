@@ -37,9 +37,9 @@ requirements:
 
 test:
   requires:
-    - pkg-config  # [unix]
+    - pkg-config
   commands:
-    - pkg-config --print-errors --modversion ldastoolsal  # [unix]
+    - pkg-config --print-errors --exact-version {{ version }} ldastoolsal
 
 about:
   home: https://wiki.ligo.org/Computing/LDASTools
