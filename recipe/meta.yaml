@@ -1,6 +1,6 @@
 {% set name = "ldas-tools-al" %}
-{% set version = "2.6.5" %}
-{% set sha256 = "0516a5aac4417db0130f67ce3bf379e6126e4cace3b9b57d5a9e9ce45676babb" %}
+{% set version = "2.6.6" %}
+{% set sha256 = "db4761a03066c880c64711d2585cfcc4e5fcb2308560828fb4ab69e457d25518" %}
 
 # dependencies
 {% set ldas_tools_cmake_version = "1.2.2" %}
@@ -30,7 +30,7 @@ requirements:
   host:
     - boost-cpp
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
-  run_constrained:  # [osx]
+  run_constrained:   # [osx]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx]
 
 test:
