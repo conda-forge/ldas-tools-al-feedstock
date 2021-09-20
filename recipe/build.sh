@@ -10,7 +10,7 @@ fi
 
 # set OSX_ARCHITECTURES on OSX
 if [ "$(uname)" == "Darwin" ]; then
-	export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_OSX_ARCHITECTURES:STRING=${ARCH}"
+	export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_OSX_ARCHITECTURES:STRING=${OSX_ARCH}"
 fi
 
 # configure
