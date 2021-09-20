@@ -1,0 +1,13 @@
+--- CMakeLists.txt	2021-08-13 12:35:45.000000000 -0700
++++ CMakeLists.txt.2	2021-09-20 02:51:32.000000000 -0700
+@@ -211,8 +211,8 @@
+   VARIABLE LDAS_WORDS_BIGENDIAN
+   VALUE ${LDAS_WORDS_BIGENDIAN}
+   DESCRIPTION "Set to 1 if system is bigendian" )
+-cx_struct_procfs_psinfo( )
+-cx_struct_procfs_stat( )
++#cx_struct_procfs_psinfo( )
++#cx_struct_procfs_stat( )
+ 
+ #dnl =====================================================================
+ #dnl  Check for individual libraries
