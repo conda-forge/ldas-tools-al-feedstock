@@ -1,9 +1,8 @@
 {% set name = "ldas-tools-al" %}
-{% set version = "2.6.6" %}
-{% set sha256 = "db4761a03066c880c64711d2585cfcc4e5fcb2308560828fb4ab69e457d25518" %}
+{% set version = "2.6.7" %}
 
 # dependencies
-{% set ldas_tools_cmake_version = "1.2.2" %}
+{% set ldas_tools_cmake_version = "1.2.3" %}
 
 package:
   name: {{ name }}
@@ -11,7 +10,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: {{ sha256 }}
+  sha256: b0a1b243997320ac6c18083adbf5b711404923b3ff309df2f2fe53489c4b0f6a
   patches:
     - no-openssl.patch
     # when cross-compiling disable some checks that use try_run
