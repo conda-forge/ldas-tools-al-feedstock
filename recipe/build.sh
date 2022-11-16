@@ -18,6 +18,7 @@ cmake \
 	${SRC_DIR} \
 	${CMAKE_ARGS} \
 	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
+	-DCMAKE_CROSSCOMPILING_EMULATOR:STRING="${CMAKE_CROSSCOMPILING_EMULATOR}" \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=true \
 ;
 
@@ -25,7 +26,7 @@ cmake \
 cmake --build . --parallel ${CPU_COUNT} --verbose
 
 # test
-if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION:-}" != "1" || "${CROSSCOMPILING_EMULATOR}" != "" ]]; then
 	ctest --parallel ${CPU_COUNT} --verbose
 fi
 
