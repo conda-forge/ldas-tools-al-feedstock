@@ -42,6 +42,8 @@ test:
   requires:
     - pkg-config
   commands:
+    - test -f ${PREFIX}/lib/libldastoolsal${SHLIB_EXT}  # [unix]
+    - test -f ${PREFIX}/include/ldastoolsal/ldas_types.h  # [unix]
     - pkg-config --print-errors --exact-version {{ version }} ldastoolsal
 
 about:
