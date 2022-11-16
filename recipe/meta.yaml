@@ -18,7 +18,9 @@ source:
     - no-check-procfs.patch  # [osx and arm64]
 
 build:
-  number: 2
+  error_overdepending: true
+  error_overlinking: true
+  number: 3
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
@@ -31,7 +33,7 @@ requirements:
     - make  # [unix]
     - pkg-config  # [unix]
   host:
-    - boost-cpp
+    - boost-cpp >=1.67
     - ldas-tools-cmake >={{ ldas_tools_cmake_version }}
   run_constrained:   # [osx and x86_64]
     - __osx >={{ MACOSX_DEPLOYMENT_TARGET|default("10.9") }}  # [osx and x86_64]
