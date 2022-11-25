@@ -1,0 +1,12 @@
+diff --git a/ldastoolsal/src/CMakeLists.txt b/ldastoolsal/src/CMakeLists.txt
+index bc707bc16..1e636ba0b 100644
+--- a/ldastoolsal/src/CMakeLists.txt
++++ b/ldastoolsal/src/CMakeLists.txt
+@@ -214,7 +214,6 @@ cx_target_library(
+   CURRENT ${libldastoolsal_la_CURRENT}
+   REVISION ${libldastoolsal_la_REVISION}
+   AGE ${libldastoolsal_la_AGE}
+-  STATIC
+   SOURCES ${libldastoolsal_la_SOURCES}
+   DEFINES
+   HAVE_CONFIG_H=1

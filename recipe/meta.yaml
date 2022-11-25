@@ -12,7 +12,10 @@ source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: b0a1b243997320ac6c18083adbf5b711404923b3ff309df2f2fe53489c4b0f6a
   patches:
+    # https://git.ligo.org/computing/ldastools/LDAS_Tools/-/merge_requests/138
     - no-openssl.patch
+    # don't build static libraries
+    - no-static.patch
     # when cross-compiling without an emulator disable some checks that use try_run
     # see https://git.ligo.org/ldastools/LDAS_Tools/-/issues/117
     - no-check-procfs.patch  # [osx and arm64]
@@ -20,7 +23,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 3
+  number: 4
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
