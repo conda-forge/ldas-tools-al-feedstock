@@ -31,7 +31,7 @@ requirements:
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
     - {{ compiler('cxx') }}
-    - cmake >=3.6
+    - cmake >=3.6,<3.30a0
     - make  # [unix]
     - pkg-config  # [unix]
   host:
