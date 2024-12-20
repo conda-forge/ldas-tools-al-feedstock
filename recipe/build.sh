@@ -8,9 +8,10 @@ if [ "$(uname)" == "Linux" ]; then
 	export LDFLAGS="-lrt ${LDFLAGS}"
 fi
 
-# set OSX_ARCHITECTURES on OSX
+# macOS
 if [ "$(uname)" == "Darwin" ]; then
 	export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_OSX_ARCHITECTURES:STRING=${OSX_ARCH}"
+	export CXXFLAGS="${CXXFLAGS} -D_LIBCPP_DISABLE_AVAILABILITY"
 fi
 
 # configure
