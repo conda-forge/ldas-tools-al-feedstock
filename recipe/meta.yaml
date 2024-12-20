@@ -19,6 +19,8 @@ source:
     - no-check-procfs.patch  # [osx and arm64]
     # don't link against libstdc++fs
     - no-stdc++fs.patch
+    # disable tPSInfo test on ppc64le
+    - arch-test-psinfo.patch
 
 build:
   error_overdepending: true
