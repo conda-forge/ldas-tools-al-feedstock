@@ -17,6 +17,8 @@ source:
     # when cross-compiling without an emulator disable some checks that use try_run
     # see https://git.ligo.org/ldastools/LDAS_Tools/-/issues/117
     - no-check-procfs.patch  # [osx and arm64]
+    # don't link against libstdc++fs
+    - no-stdc++fs.patch
 
 build:
   error_overdepending: true
