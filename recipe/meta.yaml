@@ -12,8 +12,6 @@ source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
   sha256: 74abfe842d11e53e7e0b9adc846b6fe154e92a58e12200dfb5911312e8e8cc53
   patches:
-    # https://git.ligo.org/computing/ldastools/LDAS_Tools/-/merge_requests/138
-    - no-openssl.patch
     # don't build static libraries
     - no-static.patch
     # when cross-compiling without an emulator disable some checks that use try_run
