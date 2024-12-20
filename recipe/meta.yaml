@@ -1,5 +1,5 @@
 {% set name = "ldas-tools-al" %}
-{% set version = "2.6.7" %}
+{% set version = "2.7.0" %}
 
 # dependencies
 {% set ldas_tools_cmake_version = "1.2.3" %}
@@ -10,7 +10,7 @@ package:
 
 source:
   url: http://software.ligo.org/lscsoft/source/{{ name }}-{{ version }}.tar.gz
-  sha256: b0a1b243997320ac6c18083adbf5b711404923b3ff309df2f2fe53489c4b0f6a
+  sha256: 74abfe842d11e53e7e0b9adc846b6fe154e92a58e12200dfb5911312e8e8cc53
   patches:
     # https://git.ligo.org/computing/ldastools/LDAS_Tools/-/merge_requests/138
     - no-openssl.patch
@@ -23,7 +23,7 @@ source:
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 6
+  number: 0
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
