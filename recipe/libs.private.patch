@@ -1,0 +1,24 @@
+diff --git a/ldastoolsal-uninstalled.pc.in b/ldastoolsal-uninstalled.pc.in
+index 8696f2087..aaabfe1df 100644
+--- a/ldastoolsal-uninstalled.pc.in
++++ b/ldastoolsal-uninstalled.pc.in
+@@ -11,5 +11,6 @@ SWIGFLAGS=-I${abs_top_builddir}/include
+ Name: ldastoolsal
+ Description: Library which implements abstraction layer for the ldas-tools package.
+ Version: @PACKAGE_VERSION@
+-Libs: ${abs_top_builddir}/src/libldastoolsal.la ${CXXSTDLDFLAGS} @BOOST_LDFLAGS@
++Libs: ${abs_top_builddir}/src/libldastoolsal.la
++Libs.private: ${abs_top_builddir}/src/libldastoolsal.la ${CXXSTDLDFLAGS} @BOOST_LDFLAGS@
+ Cflags: ${CXXSTDFLAGS} -I${abs_top_builddir}/include @BOOST_CPPFLAGS@
+diff --git a/src/ldastoolsal.pc.in b/src/ldastoolsal.pc.in
+index 80137cbe6..059ce516d 100644
+--- a/src/ldastoolsal.pc.in
++++ b/src/ldastoolsal.pc.in
+@@ -10,5 +10,6 @@ CXXSTDLDFLAGS=@CXXSTDLDFLAGS@
+ Name: ldastoolsal
+ Description: Library which implements abstraction layer for the ldas-tools package.
+ Version: @PROJECT_VERSION@
+-Libs: -L${libdir}  -lldastoolsal ${CXXSTDLDFLAGS} @Boost_LIBRARIES@
++Libs: -L${libdir}  -lldastoolsal
++Libs.private: -L${libdir}  -lldastoolsal ${CXXSTDLDFLAGS} @Boost_LIBRARIES@
+ Cflags: ${CXXSTDFLAGS} -I${includedir} @BOOST_CPPFLAGS@

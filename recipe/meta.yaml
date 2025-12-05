@@ -23,11 +23,14 @@ source:
     - arch-test-psinfo.patch
     # fix https://git.ligo.org/computing/ldastools/LDAS_Tools/-/issues/228
     - fix-reverse.hh.patch
+    # declare libs.private in pkg-config file
+    # seee https://git.ligo.org/computing/ldastools/LDAS_Tools/-/merge_requests/234
+    - libs.private.patch
 
 build:
   error_overdepending: true
   error_overlinking: true
-  number: 2
+  number: 3
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage("ldas-tools-al", max_pin="x.x") }}
