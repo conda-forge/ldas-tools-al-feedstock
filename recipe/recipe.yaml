@@ -1,0 +1,73 @@
+schema_version: 1
+
+context:
+  name: ldas-tools-al
+  version: 2.8.0
+  # dependencies
+  ldas_tools_cmake_version: 1.3.1
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: http://software.ligo.org/lscsoft/source/${{ name }}-${{ version }}.tar.gz
+  sha256: c70aedfdf2081472a8f9c47c09da160b9f781e77b8e8ab5bdbcf6be05ea0bd92
+  patches:
+    # don't build static libraries
+    - no-static.patch
+    # when cross-compiling without an emulator disable some checks that use try_run
+    # see https://git.ligo.org/ldastools/LDAS_Tools/-/issues/117
+    - if: osx and arm64
+      then: no-check-procfs.patch
+    # don't link against libstdc++fs
+    - no-stdc++fs.patch
+    # disable tPSInfo test on ppc64le
+    - arch-test-psinfo.patch
+    # fix https://git.ligo.org/computing/ldastools/LDAS_Tools/-/issues/228
+    - fix-reverse.hh.patch
+    # declare libs.private in pkg-config file
+    # seee https://git.ligo.org/computing/ldastools/LDAS_Tools/-/merge_requests/234
+    - libs.private.patch
+
+build:
+  number: 0
+  skip: win
+
+requirements:
+  build:
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - ${{ compiler('cxx') }}
+    - cmake >=3.6
+    - make
+    - pkg-config
+  host:
+    - ldas-tools-cmake >=${{ ldas_tools_cmake_version }}
+    - libboost-devel
+  run_exports:
+    - ${{ pin_subpackage("ldas-tools-al", upper_bound="x.x") }}
+
+tests:
+  - package_contents:
+      lib:
+        - ldastoolsal
+      include:
+        - ldastoolsal/ldas_types.h
+  - requirements:
+      run:
+        - pkg-config
+    script:
+      - pkg-config --print-errors --exact-version ${{ version }} ldastoolsal
+
+about:
+  summary: LDAS tools abstraction toolkit
+  homepage: https://wiki.ligo.org/Computing/LDASTools
+  repository: https://git.ligo.org/ldastools/LDAS_Tools
+  license: GPL-2.0-or-later
+  license_file: COPYING
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
+    - emaros
