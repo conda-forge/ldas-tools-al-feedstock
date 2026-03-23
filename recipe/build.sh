@@ -3,11 +3,6 @@
 mkdir -p _build
 pushd _build
 
-# link librt to get clock_gettime on older glibc versions
-if [ "$(uname)" == "Linux" ]; then
-	export LDFLAGS="-lrt ${LDFLAGS}"
-fi
-
 # macOS
 if [ "$(uname)" == "Darwin" ]; then
 	export CMAKE_ARGS="${CMAKE_ARGS} -DCMAKE_OSX_ARCHITECTURES:STRING=${OSX_ARCH}"
@@ -18,9 +13,9 @@ fi
 cmake \
 	${SRC_DIR} \
 	${CMAKE_ARGS} \
-	-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 	-DCMAKE_CROSSCOMPILING_EMULATOR:STRING="${CMAKE_CROSSCOMPILING_EMULATOR}" \
 	-DCMAKE_DISABLE_FIND_PACKAGE_Doxygen=true \
+	-DCMAKE_POLICY_VERSION_MINIMUM=3.5 \
 ;
 
 # build
