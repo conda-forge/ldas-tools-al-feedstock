@@ -20,11 +20,6 @@ source:
       then: no-check-procfs.patch
     # disable tPSInfo test on ppc64le
     - arch-test-psinfo.patch
-    # fix https://git.ligo.org/computing/ldastools/LDAS_Tools/-/issues/228
-    - fix-reverse.hh.patch
-    # declare libs.private in pkg-config file
-    # seee https://git.ligo.org/computing/ldastools/LDAS_Tools/-/merge_requests/234
-    - libs.private.patch
 
 build:
   number: 0
